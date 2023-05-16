@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jmu.mapper.ProductMapper">
+    <insert id="insert" parameterType="jmu.vo.Product">
+        INSERT INTO product(id,name,img,color,type,price,shopid,size) VALUES(#{id},#{name},#{img},#{color},#{type},#{price},#{shop-id},#{size})
+    </insert>
+    <select id="getID"  resultType="String">
+        SELECT count(id) FROM product
+    </select>
+    <select id="getall"  resultType="jmu.vo.Product">
+        SELECT product.id,product.name,product.img,product.size,product.type,product.price,product.shopid,product.color,person.name FROM product,person where product.shopid=person.id
+    </select>
+    <select id="getalltype"  resultType="jmu.vo.Product">
+        SELECT * FROM product where type=#{type}
+    </select>
+    <select id="getone"  parameterType="jmu.vo.Product" resultType="jmu.vo.Product">
+        SELECT * FROM product where id=#{id}
+    </select>
+</mapper>

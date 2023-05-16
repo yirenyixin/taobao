@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jmu.mapper.WalletMapper">
+    <insert id="insert" parameterType="jmu.vo.Wallet">
+        INSERT INTO wallet(personid) VALUES(#{personid})
+    </insert>
+    <update id="update" parameterType="jmu.vo.Wallet">
+        update wallet set balance=#{balance} where personid=#{personid}
+    </update>
+    <update id="add" parameterType="jmu.vo.Wallet">
+        update wallet set balance=balance+#{balance} where personid=#{personid}
+    </update>
+    <update id="reduce" parameterType="jmu.vo.Wallet">
+        update wallet set balance=balance-#{balance} where personid=#{personid}
+    </update>
+</mapper>
